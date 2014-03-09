@@ -1,0 +1,35 @@
+****************my first time to use vim editor**************************
+1.the vim editor have two mode,one command mode ,one editor mode.
+2.the vim direction key is hjkl  k is up,j is down ,h is left ,l is right.
+3.vim editor is case sensetive. 
+4.the ZZ command save & exit. the :q! exit but note save. the :wq save & exit .
+5.in the normal mode,u & U or ctrl + R can redo or redo the redoes.
+6.CTRL + G   is to view the directory of vim window about now.
+7.CTRL + w is for switch multi-window,so ,i can edit multi-files.
+8.:w save but not quit
+9.use :help to see help docs and then use :find to see all docs.
+10.:tabs to show how much you have opened.  ---:tabnew  to open a new tab   ----:tabc to close the current tab
+11.:tabp to show the previous tab ,:tabn to show the next tab .:tabm to exchange the tabs' display sequence.
+12.use ctrl +] to link a doc.use ctrl + o to go back
+13.use :! + command to execute the terminal command.  :! + command == terminal command.
+14.use the vimtutor command to experience the vim editor.
+**********************my first time to use emacs editor ************************************
+        **************************ther are some points recorded it as text files while i experience it **************************
+1.C ---ctrl key      M------ALT key
+2.c-v m-v
+3.ctrl + p up  +n down  +f right  +b  left   we can memorize it as four words:  previous  next line   &&&  backward forward character.
+compare to vim  one: k j h l   one is :p n b f
+4.atl + p n f b   f b ----word not character
+5.ctrl + a + e  the begin or end of line  m + a + e the begin or end of sentences.
+6.c+u number  ctrl + f n b  e  ---------move the cursor how much character (user number).
+7.c + x  number  display the amount of window.
+8.c+h k c+f  display the help info use c+ x 1 to close.
+9.ctrl+d  delete one by one .  alt +d delete all of the cursor back word by word. c+ k ---delete one line  like as sublime text2 .alt +k delete one sentence . ctrl + space to choose text and use ctrl +w  to delete 
+10.ctrl + x  u to undo the operate.
+11.ctrl + g to cancel the command.not like vim's esc.
+12.the new name is added ~ at the end for avoid lost.
+
+
+
+*******************************Terminal ShortCut *************************
+1.ctrl + alt + arrow to choose display what application you want to use.
