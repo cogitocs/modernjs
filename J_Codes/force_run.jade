@@ -1,0 +1,156 @@
+
+ck content
+  .well.well-small
+    legend 
+      i#btn_payroll_panel.icon-circle-arrow-left(style="cursor:pointer",onclick="history.go(-1);",title="返回")
+        |强制分布计算
+      client_create_year = moment(user.client.createDate).year();
+      this_year = moment().year();
+      year_range = _.range(client_create_year,this_year+2)
+      .btn-toolbar.pull-right(style=" margin-top: 0px; ")
+        button#btn_list_filter.btn.btn-small
+          i.icon-filter
+          |  计算条件
+    .row-fluid#filter_cond
+      .span12 
+        .navbar
+          .navbar-inner
+            //- ul.nav(style="width: 1100px;margin-left: -11px;")
+            //-   li
+            //-     label.control-label.span1(for='company',style='width:70px') 选择公司：     
+            //-     select#company.chzn-select(name='company',type='text',multiple,data-placeholder='强制分布公司',style ="width:250px;margin-top:50px")
+            //-       each val,key in companies   
+            //-         option(value='#{key}', selected=_.isEqual(key,user.people.company)) #{val}    
+            ul.nav(style="width: 1100px;margin-left: -11px")     
+              li
+                label(style="padding-top:10px;width:70px") 选择周期:  
+              li
+                label(style="padding-top:3px")         
+                select#year(style="width:80px;")
+                  for year in year_range
+                    option(selected=(year==this_year))  
+                      =year
+              li.divider-vertical
+              li
+                label.checkbox
+                  input(type="checkbox", name="annual", value="0")
+                  span.label.label-important 全年度
+              li.divider-vertical
+              li
+                label.checkbox
+                  input(type="checkbox", name="halfyear", value="0")
+                  span.label.label-warning 上半年
+                label.checkbox
+                  input(type="checkbox", name="halfyear", value="1")
+                  span.label.label-warning 下半年
+              li.divider-vertical
+              li
+                label.checkbox
+                  input(type="checkbox", name="quarter", value="0")
+                  span.label.label-success 一季度
+                label.checkbox
+                  input(type="checkbox", name="month", value="1")  
+                  span.label.label-info 二月
+              li
+                label.checkbox
+                  input(type="checkbox", name="month", value="0")
+                  span.label.label-info 一月
+                label.checkbox
+                  input(type="checkbox", name="month", value="2")  
+                  span.label.label-info 三月
+              li.divider-vertical
+              li
+                label.checkbox
+                  input(type="checkbox", name="quarter", value="1")
+                  span.label.label-success 二季度
+                label.checkbox
+                  input(type="checkbox", name="month", value="4")  
+                  span.label.label-info 五月
+              li
+                label.checkbox
+                  input(type="checkbox", name="month", value="3")
+                  span.label.label-info 四月
+                label.checkbox
+                  input(type="checkbox", name="month", value="5")  
+                  span.label.label-info 六月
+              li.divider-vertical
+              li
+                label.checkbox
+                  input(type="checkbox", name="quarter", value="2")
+                  span.label.label-success 三季度
+                label.checkbox
+                  input(type="checkbox", name="month", value="7")  
+                  span.label.label-info 八月
+              li
+                label.checkbox
+                  input(type="checkbox", name="month", value="6")
+                  span.label.label-info 七月
+                label.checkbox
+                  input(type="checkbox", name="month", value="8")  
+                  span.label.label-info 九月
+              li.divider-vertical
+              li
+                label.checkbox
+                  input(type="checkbox", name="quarter", value="3")
+                  span.label.label-success 四季度
+                label.checkbox
+                  input(type="checkbox", name="month", value="10")  
+                  span.label.label-info 十一月
+              li
+                label.checkbox
+                  input(type="checkbox", name="month", value="9")
+                  span.label.label-info 十月
+                label.checkbox
+                  input(type="checkbox", name="month", value="11")  
+                  span.label.label-info 十二月
+              li.divider-vertical 
+              li
+                label
+                  button#company(type='button',style="width:80px").btn.btn-small  公  司    
+    hr
+    h4 强制分布-结束
+    table#tblAlreadycompany.responsive.table.table-striped.table-bordered(style="width:100%;margin-bottom:0;")    
+      thead
+        tr
+          th id
+          th(width="50%") 公司名称
+          th(width="40%") 周期
+          th(width="15%",style='text-align:center') 操作
+  
+    //- .well-dataTable(style="border:0px;margin-top: -30px;")   
+    hr
+    blockquote  
+      h4 强制分布-明细                
+      table#tblOPs.responsive.table.table-striped.table-bordered(style="width:100%;margin-bottom:0;")
+        thead
+          tr
+            th(width="5%") 工号
+            th(width="5%").no_sort 员工名称
+            th(width="15%") 公司
+            th(width="10%") 职位
+            th(width="10%") 部门
+            th(width="6%") 绩效得分   
+            th(width="5%") 绩效等级
+            th(width="7%") 强制分布等级 
+            th(width="7%") 等级是否改变
+        tbody
+  #ihModal.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='ihModalLabel', aria-hidden='true', style='display: none;')
+    #manobj(style="display:none")
+    .modal-header(style=" height: 30px; ")
+      button.close(type='button', data-dismiss='modal', aria-hidden='true')
+      h3#ihModalLabel
+    .modal-body(style="height:300px;width: 560px;")
+      #ih_table     
+    .modal-footer 
+      button.btn.btn-success(id='make_sure',type='button', data-dismiss='modal', aria-hidden='true') 确 认
+      button.btn.btn-success(type='button', data-dismiss='modal', aria-hidden='true') 关 闭
+
+block page_script
+  script(type="text/javascript", src="/js/plugins/jquery.form.js")
+  script(type="text/javascript", src="/assets/plugins/async.js")
+  script(type="text/javascript", src="/js/plugins/TableTools-2.1.5/media/js/TableTools.min.js")
+  link(href="/js/plugins/TableTools-2.1.5/media/css/TableTools.css", rel="stylesheet")
+
+  script(type="text/javascript", src="/js/plugins/validation/dist/jquery.validate.min.js")
+  script(type="text/javascript", src="#{path_js_page}/admin.pm.force_run.js")
+  script(type="text/javascript", src="/js/plugins/FixedColumns-2.0.3/media/js/FixedColumns.min.js") 
